@@ -1,0 +1,17 @@
+﻿@model List<CheeseMVC.Models.CheeseCatagory>
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (Model.Count == 0)
+{
+    <p>No catagories yet!</p>
+}
+<ul>
+    @foreach (var catagory in Model)
+    {
+        <li>@catagory.Name</li>
+
+    }
+</ul>
+@{
+}
