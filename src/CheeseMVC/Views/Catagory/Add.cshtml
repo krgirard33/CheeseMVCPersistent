@@ -1,0 +1,18 @@
+﻿@model CheeseMVC.ViewModels.AddCatagoryViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <h1>Add Catagory</h1>
+
+    <form asp-controller="Catagory" asp-action="Add" method="post">
+
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <input type="submit" value="Add Cheese" />
+
+    </form>
+}
