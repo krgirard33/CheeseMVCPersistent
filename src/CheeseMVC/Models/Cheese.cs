@@ -4,7 +4,8 @@
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public CheeseType Type { get; set; }
+        public CheeseCatagory Catagory { get; set; }
         public int ID { get; set; }
+        public int CatagoryID { get; set; }
     }
 }
