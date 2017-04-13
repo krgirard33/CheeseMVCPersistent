@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using CheeseMVC.Data;
 
 namespace CheeseMVC.ViewModels
 {
@@ -17,31 +18,32 @@ namespace CheeseMVC.ViewModels
         [Required(ErrorMessage = "You must give your cheese a description")]
         public string Description { get; set; }
 
-        public CheeseType Type { get; set; }
+        [Required]
+        [Display(Name = "Catagory")]
+        public int CatagoryID { get; set; }
 
-        public List<SelectListItem> CheeseTypes { get; set; }
+        public List<SelectListItem> Catagories { get; set; }
+        public AddCheeseViewModel(IEnumerable<CheeseCatagory> catagories)
+        {
+            Catagories = new List<SelectListItem>();
 
-        public AddCheeseViewModel() {
-
-            CheeseTypes = new List<SelectListItem>();
 
             // <option value="0">Hard</option>
-            CheeseTypes.Add(new SelectListItem {
-                Value = ((int) CheeseType.Hard).ToString(),
-                Text = CheeseType.Hard.ToString()
-            });
-
-            CheeseTypes.Add(new SelectListItem
+            foreach (var catagory in catagories)
             {
-                Value = ((int)CheeseType.Soft).ToString(),
-                Text = CheeseType.Soft.ToString()
-            });
+                Catagories.Add(new SelectListItem
+                {
+                    Value = catagory.ID.ToString(),
+                    Text = catagory.Name.ToString()
+                    
+                });
+            }
 
-            CheeseTypes.Add(new SelectListItem
+            /*Catagories.Add(new SelectListItem
             {
-                Value = ((int)CheeseType.Fake).ToString(),
+                Value = ((int)Catagories.Fake).ToString(),
                 Text = CheeseType.Fake.ToString()
-            });
+            }); */
 
         }
     }
